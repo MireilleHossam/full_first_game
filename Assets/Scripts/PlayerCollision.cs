@@ -13,7 +13,7 @@ public class PlayerCollision : MonoBehaviour
         if(collisionInfo.collider.tag== "Obstacle")
         {
             Debug.Log("WE HIT SOMETHING!!");
-            movement.enabled = false;
+           // movement.enabled = false;
         }
     }
 
