@@ -15,7 +15,7 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(player.transform.position);
+        //Debug.Log(player.transform.position); // Checking if it records the players position
         transform.position = player.transform.position +  offset;
     }
 }

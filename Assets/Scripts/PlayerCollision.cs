@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public PlayerMovement movement; // taking the script playerMovement (as a reference) and enabling it
+
+    // collision built-in method
+    public void OnCollisionEnter(Collision collisionInfo)
     {
-        
+        if(collisionInfo.collider.tag== "Obstacle")
+        {
+            Debug.Log("WE HIT SOMETHING!!");
+            movement.enabled = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
