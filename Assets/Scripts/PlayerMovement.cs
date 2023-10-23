@@ -24,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(-sideWaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
+
+        // if player falls out of the track/ plane level
+        if(rb.position.y < -1f)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 }
 
