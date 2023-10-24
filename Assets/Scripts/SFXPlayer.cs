@@ -5,24 +5,23 @@ using UnityEngine;
 public class SFXPlayer : MonoBehaviour
 {
     public AudioSource audioSource;
+    // public GameObject soundObject;
     // Start is called before the first frame update
     void Start()
     {
-        audioSource= GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
     public void PlaySFX()
     {
+        //GameObject sfx = Instantiate(soundObject);
+        //Destroy(sfx, 5f);
         audioSource.Play();
+
     }
 
 
 
 
-        
+
 }
