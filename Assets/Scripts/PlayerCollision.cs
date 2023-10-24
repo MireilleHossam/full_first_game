@@ -6,7 +6,8 @@ public class PlayerCollision : MonoBehaviour
 {
 
     public PlayerMovement movement; // taking the script playerMovement (as a reference) and enabling it
-                                    // public GameManager gameManager; // reference to the GameManager to identify the state of the game manager INSTEAD WE CAN FIND THE TYPE BECAUSE IT WILL WORK BOTH IF THE GAME IS IN THE SCENE OR NOT
+   // public GameManager gameManager; // reference to the GameManager to identify the state of the game manager INSTEAD WE CAN FIND THE TYPE BECAUSE IT WILL WORK BOTH IF THE GAME IS IN THE SCENE OR NOT
+    public int prizes =0;
     void Start()
     {
 
@@ -27,7 +28,11 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Collecting Points!!");
             // movement.enabled = false;
             collisionInfo.gameObject.GetComponent<SFXPlayer>().PlaySFX();
-            Destroy(collisionInfo.gameObject, 5f);
+            prizes++; // collecting the prizes
+             collisionInfo.gameObject.GetComponent<SFXPlayer>().PlaySFX();
+            collisionInfo.gameObject.SetActive(false); // disables the prizes
+
+            //Destroy(collisionInfo.gameObject);
 
 
         }
