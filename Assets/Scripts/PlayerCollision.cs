@@ -6,37 +6,38 @@ public class PlayerCollision : MonoBehaviour
 {
 
     public PlayerMovement movement; // taking the script playerMovement (as a reference) and enabling it
-   // public GameManager gameManager; // reference to the GameManager to identify the state of the game manager INSTEAD WE CAN FIND THE TYPE BECAUSE IT WILL WORK BOTH IF THE GAME IS IN THE SCENE OR NOT
     public int prizes =0;
+
+    public GameObject prizeSoundEffectsFeedback; // creating the object that will be instaniated
+    
     void Start()
     {
 
     }
-    // collision built-in method
-    public void OnCollisionEnter(Collision collisionInfo)
+    // collision built-in method allows the player to see the object hitting
+   public void OnCollisionEnter(Collision collisionInfo)
     {
-        if (collisionInfo.collider.tag == "Obstacle")
-        {
-            Debug.Log("WE HIT SOMETHING!!");
-            // movement.enabled = false;
-            collisionInfo.gameObject.GetComponent<SFXPlayer>().PlaySFX();
-            FindObjectOfType<GameManager>().EndGame(); // bring the method engame from one of the states in the GameManger script
-            //Destroy(collisionInfo.gameObject, 5f);
-        }
-        if (collisionInfo.collider.tag == "Prizes")
+   if (collisionInfo.collider.tag == "Obstacle")
+    {
+         Debug.Log("WE HIT SOMETHING!!");
+         collisionInfo.gameObject.GetComponent<SFXPlayer>().PlaySFX();
+         FindObjectOfType<GameManager>().EndGame(); // bring the method engame from one of the states in the GameManger script
+         
+    }
+   }
+
+    // makes the player move through the object
+     void OnTriggerEnter(Collider other)
+    {
+            if (other.gameObject.CompareTag("Prizes"))
         {
             Debug.Log("Collecting Points!!");
-            // movement.enabled = false;
-            collisionInfo.gameObject.GetComponent<SFXPlayer>().PlaySFX();
-            prizes++; // collecting the prizes
-             collisionInfo.gameObject.GetComponent<SFXPlayer>().PlaySFX();
-            collisionInfo.gameObject.SetActive(false); // disables the prizes
-
-            //Destroy(collisionInfo.gameObject);
-
-
+            prizes++;
+            other.gameObject.SetActive(false);
+            Instantiate(prizeSoundEffectsFeedback); // means create the prefab object after the one triggered is deactivated
         }
-
     }
+
+
 
 }
