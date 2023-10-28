@@ -13,12 +13,6 @@ public class PlayerScore : MonoBehaviour
     //VARIABLES THAT WILL HOLD THE VALUES OF THE ABOVE ELEMENTS
     public float gemzCount =0;
 
-    private void Start()
-    {
-        
-      
-    }
-
 
 
 
