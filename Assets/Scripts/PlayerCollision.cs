@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
 
     public PlayerMovement movement; // taking the script playerMovement (as a reference) and enabling it
-    public int prizes =0;
 
     public GameObject prizeSoundEffectsFeedback; // creating the object that will be instaniated
-    
-    void Start()
-    {
 
-    }
+    public Text gems;
+    public Text collectingPrizes; // accesing the "colleted Prizes Num."
+    public int prizes = 0;
+
     // collision built-in method allows the player to see the object hitting
-   public void OnCollisionEnter(Collision collisionInfo)
+    public void OnCollisionEnter(Collision collisionInfo)
     {
    if (collisionInfo.collider.tag == "Obstacle")
     {
@@ -33,6 +33,8 @@ public class PlayerCollision : MonoBehaviour
         {
             Debug.Log("Collecting Points!!");
             prizes++;
+            Debug.Log( "Prizes" + prizes);
+            collectingPrizes.text = prizes.ToString();
             other.gameObject.SetActive(false);
             Instantiate(prizeSoundEffectsFeedback); // means create the prefab object after the one triggered is deactivated
         }
